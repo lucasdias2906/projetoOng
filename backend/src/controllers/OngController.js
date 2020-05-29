@@ -1,4 +1,4 @@
-const crypto = require("crypto")
+const generationUniqueId = require("../utils/generetion.uniqueId")
 const connection = require("../database/connection")
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
     async create(req,res){
         const {name,email,whatsapp,city,uf} = req.body;
 
-    const id =  crypto.randomBytes(4).toString("HEX");
+    const id =  generationUniqueId()
 
     await connection("ongs").insert({ // quando ele chegar aqui ele vai aguardar(await) pra entao ele continuar
         id,
